@@ -14,5 +14,5 @@ class App {
 class Hello
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    println(GeneratedHello().getName())
 }

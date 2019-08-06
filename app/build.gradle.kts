@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
+
 plugins {
     kotlin("jvm")
     kotlin("kapt")
@@ -9,17 +11,17 @@ repositories {
 }
 
 kapt {
-    generateStubs = true
     // TODO
+    // https://medium.com/@MiBLT/hello-world-of-annotation-processing-in-kotlin-3ec0290c1fdd
+    // generateStubs = true
     // https://github.com/JamiesWhiteShirt/kapt-example/blob/master/kapt-example-app/build.gradle.kts
     // correctErrorTypes = true
 }
 
 sourceSets {
     main {
-        java {
-            // TODO: can I change the place?
-            this.srcDir("${buildDir.absolutePath}/tmp/kapt/main/kotlinGenerated/")
+        withConvention(KotlinSourceSet::class) {
+            kotlin.srcDir("${buildDir.absolutePath}/build/generated/source/kaptKotlin/main")
         }
     }
 }
