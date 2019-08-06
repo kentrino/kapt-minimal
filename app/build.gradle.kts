@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    kotlin("kapt")
     application
 }
 
@@ -8,6 +9,8 @@ repositories {
 }
 
 dependencies {
+    kapt(project(":generator"))
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
